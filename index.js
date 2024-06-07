@@ -1,2 +1,1 @@
-export default str => str.split('').reverse().join('');
-// test
+export default (str) => str.split('').reverse().join('');
