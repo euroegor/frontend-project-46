@@ -1,0 +1,20 @@
+name: hello-world
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Клонируем репозиторий
+      - uses: actions/checkout@v3
+      # Устанавливаем Node.js
+      - uses: actions/setup-node@v3
+      # Ставим зависимости
+      - run: make install
+      # Запускаем линтер
+      - run: make lint
+      # Запускаем тесты
+      # у шагов может быть имя, иногда это помогает отладке
+      # имя выводится на Github при просмотре сборки
+      - name: run tests
+        run: make test # name и run относятся к одной задаче, поэтому дефис ставится только перед name
+        
