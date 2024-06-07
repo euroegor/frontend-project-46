@@ -3,4 +3,4 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/f4f21035e66ca5ecc0b4/maintainability)](https://codeclimate.com/github/euroegor/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f4f21035e66ca5ecc0b4/test_coverage)](https://codeclimate.com/github/euroegor/frontend-project-46/test_coverage)
 
-![example workflow](https://github.com/github/docs/actions/workflows/gendiff-check.yml/badge.svg)
+[![Action Gendiff](https://github.com/euroegor/frontend-project-46/actions/workflows/gendiff-check.yml/badge.svg)](https://github.com/euroegor/frontend-project-46/actions)
