@@ -1,0 +1,16 @@
+---
+first_name: Adam
+last_name: Bertram
+hair_color: Brown
+age: 33
+married: true
+dog_count: 2
+dogs:
+    dog1:
+        name: Elliott
+        breed: Shin-Tzu
+        color: black/white
+    dog2:
+        name: Brody
+        breed: Shin-Tzu
+        color: black/white

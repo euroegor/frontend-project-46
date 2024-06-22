@@ -5,3 +5,4 @@
 [![Action Gendiff](https://github.com/euroegor/frontend-project-46/actions/workflows/gendiff-check.yml/badge.svg)](https://github.com/euroegor/frontend-project-46/actions)
 
 https://asciinema.org/a/4lyu36WnmFvSnpoFPHIBzezal
+https://asciinema.org/a/0LZFSrNiHqPyiuTqFa5neucbf
