@@ -1,21 +1,29 @@
-const transformation = (result) => {
-  const result2 = [];
-  result.map((item) => {
-    if (item.type === 'unchanged') {
-      result2.push(`   ${item.key}: ${item.value}`);
-    } if (item.type === 'deleted') {
-      result2.push(` - ${item.key}: ${item.value}`);
-    } if (item.type === 'added') {
-      result2.push(` + ${item.key}: ${item.value}`);
-    } if (item.type === 'changed') {
-      result2.push(` - ${item.key}: ${item.value1}`);
-      result2.push(` + ${item.key}: ${item.value2}`);
-    } if (item.type === 'nested') {
-      result2.push(`   ${item.key}: ${transformation(item.children)}`);
+import _ from 'lodash';
+
+const transformation = (file, replacer = ' ', spaceCount = 1) => {
+  const iter = (data, depth) => {
+    for (const item of data) {
+      if (!_.isObject(item)) return `${item}`;
+      const lines = item.map(([key, value, type]) => {
+     const preparedValue = iter(value, depth + 1);
+    const indent = replacer.repeat(depth * spaceCount);
+    if (type === 'added') {
+      return `${indent}+ ${key}: ${value}`;
+    } if (type === 'deleted') {
+      return `${indent}- ${key}: ${value}`;
+    } if (type === 'changed') {
+      return `${indent}- ${key}: ${preparedValue[0]}\n${indent}+ ${key}: ${preparedValue[1]}`;
+    } if (type === 'unchanged') {
+      return `${indent}  ${key}: ${value}`;
+    } if (type === 'nested') {
+      return `${indent}  ${key}: ${value}`;
     }
-    return result2;
   });
-  const result3 = result2.join('\n');
-  return `{\n${result3}\n}`;
+  const outIndent = replacer.repeat((depth * spaceCount) - spaceCount);
+  const result = [ '{', ...lines, `${outIndent}}`].join('\n');
+  return result;
+    }
+  }
+  return iter(file, 1);
 };
 export default transformation;

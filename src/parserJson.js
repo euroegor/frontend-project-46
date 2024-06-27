@@ -7,3 +7,4 @@ const parserJson = (file, type = 'utf8') => {
 };
 export default parserJson;
 // console.log(parserJson('../file1.json', 'utf-8'));
+// console.log(parserJson('../file2.json', 'utf-8'));
