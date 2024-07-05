@@ -15,6 +15,6 @@ program
     const obj1 = parsers(filepath1);
     const obj2 = parsers(filepath2);
     const result = genDiff(obj1, obj2);
-    console.log(transformation(result));
+    console.log(transformation(result, ' ', 2));
   });
 program.parse();
