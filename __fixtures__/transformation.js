@@ -7,7 +7,7 @@ const transformation = (file, replacer = ' ', spaceCount = 1) => {
       const iter1 = (data1, depth1) => {
         if (!_.isObject(data1)) return `${data1}`;
         const test = Object.entries(data1).map(([key, value]) => {
-          const preparedValue = iter1(value, depth1 + 3);
+          const preparedValue = iter1(value, depth1 + 1);
           const indent = replacer.repeat(depth1 * spaceCount);
           return `${indent}${key}: ${preparedValue}`;
         });
@@ -15,7 +15,7 @@ const transformation = (file, replacer = ' ', spaceCount = 1) => {
         const result = ['{', ...test, `${outIndent}}`].join('\n');
         return result;
       };
-      const preparedValue = iter1(item.value, depth + 1);
+      const preparedValue = iter1(item.value, depth + 3);
       const forNested = iter(item.children, depth + 1);
       const indent = replacer.repeat(depth * spaceCount);
       if (item.type === 'unchanged') {
