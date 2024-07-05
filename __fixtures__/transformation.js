@@ -7,7 +7,7 @@ const transformation = (file, replacer = ' ', spaceCount = 1) => {
       const iter1 = (data1, depth1) => {
         if (!_.isObject(data1)) return `${data1}`;
         const test = Object.entries(data1).map(([key, value]) => {
-          const preparedValue = iter1(value, depth1 + 1);
+          const preparedValue = iter1(value, depth1 + 3);
           const indent = replacer.repeat(depth1 * spaceCount);
           return `${indent}${key}: ${preparedValue}`;
         });
