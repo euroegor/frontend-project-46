@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const transformation = (file, replacer = ' ', spaceCount = 1) => {
+const stylish = (file, replacer = ' ', spaceCount = 1) => {
   const iter = (data, depth) => {
     if (!_.isObject(data)) return `${data}`;
     const lines = data.map((item) => {
@@ -15,7 +15,7 @@ const transformation = (file, replacer = ' ', spaceCount = 1) => {
         const result = ['{', ...test, `${outIndent}}`].join('\n');
         return result;
       };
-      const preparedValue = iter1(item.value, depth + 3);
+      const preparedValue = iter1(item.value, depth + 1);
       const forNested = iter(item.children, depth + 1);
       const indent = replacer.repeat(depth * spaceCount);
       if (item.type === 'unchanged') {
@@ -36,4 +36,4 @@ const transformation = (file, replacer = ' ', spaceCount = 1) => {
   };
   return iter(file, 1);
 };
-export default transformation;
+export default stylish;
