@@ -1,13 +1,10 @@
-import path from 'path';
-import parserJson from './parserJson.js';
-import parserYaml from './parserYaml.js';
+import yaml from 'js-yaml';
 
-const parsers = (file, type = 'utf8') => {
-  const extname1 = path.extname(file);
-  if (extname1 === '.yaml' || extname1 === '.yml') {
-    return parserYaml(file, type);
+const parsers = (format, file) => {
+  if (format === 'yaml' || format === 'yml') {
+    return yaml.load(file);
   }
-  return parserJson(file, type);
+  return JSON.parse(file);
 };
 export default parsers;
 // console.log(parsers('../file1.yml'));

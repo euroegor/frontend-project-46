@@ -18,3 +18,4 @@ const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   return formatStyle(innerTree, formatName);
 };
 export default genDiff;
+// console.log(genDiff('file1.json', 'file2.json'));
