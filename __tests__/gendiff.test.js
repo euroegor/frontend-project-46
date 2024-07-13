@@ -16,7 +16,6 @@ const getResultA = readFile('resultForStylish.txt');
 const formatA = 'stylish';
 // const formatB = 'plain';
 const resultA = genDiff(firstFile, secondFile, formatA);
-console.log(resultA);
 // const resultB = genDiff(firstFile, secondFile, formatB);
 test('genDiffA', () => {
   expect(genDiff(resultA)).toEqual(getResultA);
