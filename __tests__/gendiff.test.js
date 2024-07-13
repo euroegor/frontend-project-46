@@ -11,10 +11,13 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 
 const firstFile = getFixturePath('file1.json');
 const secondFile = getFixturePath('file2.json');
-const getResult = readFile('resultForStylish.txt');
-const format = 'stylish';
-const result = genDiff(firstFile, secondFile, format);
-expect(result).toEqual(getResult);
-test('genDiff', () => {
-  expect(genDiff(result)).toEqual(getResult);
+const getResultA = readFile('resultForStylish.txt');
+// const getResultB = readFile('resultForPlain.txt');
+const formatA = 'stylish';
+// const formatB = 'plain';
+const resultA = genDiff(firstFile, secondFile, formatA);
+console.log(resultA);
+// const resultB = genDiff(firstFile, secondFile, formatB);
+test('genDiffA', () => {
+  expect(genDiff(resultA)).toEqual(getResultA);
 });

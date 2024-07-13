@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import parsers from './parsers.js';
 import diffTree from './diffTree.js';
-import formatStyle from './formats/format.js';
+import formatStyle from './formatters/index.js';
 
 const readFile = (filename) => fs.readFileSync(path.resolve(process.cwd(), filename.trim()), 'utf-8');
 const extractFormat = (filename) => path.extname(filename).slice(1);
@@ -18,4 +18,3 @@ const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   return formatStyle(innerTree, formatName);
 };
 export default genDiff;
-// console.log(genDiff('file1.json', 'file2.json'));
