@@ -11,7 +11,7 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 
 const firstFile = getFixturePath('file1.json');
 const secondFile = getFixturePath('file2.json');
-const getResultA = readFile('resultForStylish.txt');
+const getResultA = readFile('resultForStylish.txt').trim();
 // const getResultB = readFile('resultForPlain.txt');
 const formatA = 'stylish';
 // const formatB = 'plain';
