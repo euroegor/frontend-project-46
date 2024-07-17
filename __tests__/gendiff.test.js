@@ -18,5 +18,5 @@ const formatA = 'stylish';
 const resultA = genDiff(firstFile, secondFile, formatA);
 // const resultB = genDiff(firstFile, secondFile, formatB);
 test('genDiffA', () => {
-  expect(genDiff(resultA)).toEqual(getResultA);
+  expect(resultA).toEqual(getResultA);
 });
