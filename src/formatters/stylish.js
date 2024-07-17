@@ -29,6 +29,7 @@ const stylish = (file, replacer = ' ', spaceCount = 1) => {
       } if (item.type === 'nested') {
         return `${indent}${item.key}: ${forNested}`;
       }
+      return lines;
     });
     const outIndent = replacer.repeat((depth * spaceCount) - spaceCount);
     const result = ['{', ...lines, `${outIndent}}`].join('\n');

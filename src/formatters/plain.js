@@ -20,6 +20,7 @@ const plain = (tree, acc = 0) => {
     } if (item.type === 'nested') {
       return `${plain(item.children, property)}`;
     }
+    return lines;
   });
   return lines.join('\n');
 };
