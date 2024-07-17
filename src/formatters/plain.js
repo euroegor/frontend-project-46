@@ -6,6 +6,10 @@ const plain = (tree, acc = 0) => {
       return '[complex value]';
     } if (val === null) {
       return null;
+    } if (val === true) {
+      return true;
+    } if (val === false) {
+      return false;
     }
     return `'${val}'`;
   };
