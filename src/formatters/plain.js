@@ -6,12 +6,10 @@ const GetPlain = (tree, acc = 0) => {
       return '[complex value]';
     } if (val === null) {
       return null;
-    } if (val === true) {
-      return true;
-    } if (val === false) {
-      return false;
+    } if (typeof val === 'string') {
+      return `'${val}'`;
     }
-    return `'${val}'`;
+    return val ? 'true' : 'false';
   };
   const lines = tree.filter((item1) => item1.type !== 'unchanged').map((item) => {
     const property = acc ? `${acc}.${item.key}` : item.key;
