@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
-import genDiff from '../src/gendiff-code.js';
+import GetGenDiff from '../src/gendiff-code.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,6 +20,6 @@ test.each(testcases)('Compare %s and %s to expect %s in "%s" style', (file1, fil
   const firstFile = getFixturePath(file1);
   const secondFile = getFixturePath(file2);
   const getResult = readFile(output).trim();
-  const result = genDiff(firstFile, secondFile, style);
+  const result = GetGenDiff(firstFile, secondFile, style);
   expect(result).toEqual(getResult);
 });
