@@ -6,7 +6,7 @@
     "gendiff": "bin/gendiff.js"
   },
   "description": "Вычислитель отличий – программа, определяющая разницу между двумя структурами данных.",
-  "main": "index.js",
+  "main": "src/gendiff-code.js",
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage"
