@@ -1,16 +1,16 @@
-import GetStylish from './stylish.js';
-import GetPlain from './plain.js';
+import getStylish from './stylish.js';
+import getPlain from './plain.js';
 
-const GetFormatStyle = (innerTree, format) => {
+const getFormatStyle = (innerTree, format) => {
   switch (format) {
     case 'stylish':
-      return GetStylish(innerTree);
+      return getStylish(innerTree);
     case 'plain':
-      return GetPlain(innerTree);
+      return getPlain(innerTree);
     case 'json':
       return JSON.stringify(innerTree);
     default:
       throw new Error(`Формат не поддерживается: ${format}`);
   }
 };
-export default GetFormatStyle;
+export default getFormatStyle;

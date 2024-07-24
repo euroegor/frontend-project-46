@@ -1,19 +1,20 @@
 import _ from 'lodash';
 
-const GetStylish = (file, replacer = ' ', spaceCount = 4) => {
+const iterNested = (data, depthNested, replacer = ' ', spaceCount = 4) => {
+  if (!_.isObject(data)) return `${data}`;
+  const lines = Object.entries(data).map(([key, value]) => {
+    const preparedValue = iterNested(value, depthNested + 1);
+    const indent = replacer.repeat(depthNested * spaceCount);
+    return `${indent}${key}: ${preparedValue}`;
+  });
+  const outIndent = replacer.repeat((depthNested * spaceCount) - spaceCount);
+  const result = ['{', ...lines, `${outIndent}}`].join('\n');
+  return result;
+};
+
+const getStylish = (file, replacer = ' ', spaceCount = 4) => {
   const iter = (data, depth) => {
     if (!_.isObject(data)) return `${data}`;
-    const iterNested = (data1, depth1) => {
-      if (!_.isObject(data1)) return `${data1}`;
-      const lines = Object.entries(data1).map(([key, value]) => {
-        const preparedValue = iterNested(value, depth1 + 1);
-        const indent = replacer.repeat(depth1 * spaceCount);
-        return `${indent}${key}: ${preparedValue}`;
-      });
-      const outIndent = replacer.repeat((depth1 * spaceCount) - spaceCount);
-      const result = ['{', ...lines, `${outIndent}}`].join('\n');
-      return result;
-    };
     const lines = data.map((item) => {
       const preparedValue = iterNested(item.value, depth + 1);
       const indent = replacer.repeat(depth * spaceCount - 2);
@@ -38,4 +39,4 @@ const GetStylish = (file, replacer = ' ', spaceCount = 4) => {
   };
   return iter(file, 1);
 };
-export default GetStylish;
+export default getStylish;

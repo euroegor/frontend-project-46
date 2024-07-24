@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
-import GetGenDiff from '../src/gendiff-code.js';
+import getGenDiff from '../src/gendiff-code.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -14,12 +14,13 @@ const testcases = [
   ['file1.yaml', 'file2.yaml', 'resultForStylish.txt', 'stylish'],
   ['file1.json', 'file2.json', 'resultForStylish.txt', 'stylish'],
   ['file1.json', 'file2.json', 'resultForPlain.txt', 'plain'],
+  ['file1.json', 'file2.json', 'resultForStylish.txt'],
 ];
 
-test.each(testcases)('Compare %s and %s to expect %s in "%s" style', (file1, file2, output, style) => {
+test.each(testcases)('Compare %s and %s to expect %s in "%s" style', (file1, file2, output, style = 'stylish') => {
   const firstFile = getFixturePath(file1);
   const secondFile = getFixturePath(file2);
   const getResult = readFile(output).trim();
-  const result = GetGenDiff(firstFile, secondFile, style);
+  const result = getGenDiff(firstFile, secondFile, style);
   expect(result).toEqual(getResult);
 });
