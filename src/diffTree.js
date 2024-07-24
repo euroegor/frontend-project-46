@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const getDiffTree = (data1, data2) => {
-  const keys = _.union(Object.keys(data1), Object.keys(data2)).sort((a, b) => a.localeCompare(b));
+  const keys = _.orderBy(_.union(Object.keys(data1), Object.keys(data2)));
   return keys.map((key) => {
     if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
       return { key, type: 'nested', children: getDiffTree(data1[key], data2[key]) };
